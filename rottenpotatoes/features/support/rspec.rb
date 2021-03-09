@@ -1,6 +1,3 @@
-# This file prevents RSpec from issuing DEPRECATION warnings when it encounters
-# deprecated syntax in `features/step_definitions/web_steps`.
-
 require 'rspec/core'
 
 RSpec.configure do |config|
