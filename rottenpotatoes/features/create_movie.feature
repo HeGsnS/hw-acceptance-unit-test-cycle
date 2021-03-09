@@ -15,6 +15,6 @@ Background: movies in database
 
 Scenario: delete a movie
   Given I am on the details page for "Star Wars"
-  When   I press "Delete"
+  When  I press "Delete"
   Then  I should be on the home page
   And   I should see "Movie 'Star Wars' deleted."
