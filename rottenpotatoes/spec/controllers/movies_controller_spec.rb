@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe MoviesController, type: :controller do
+    # GET index
     describe "GET index" do
       it "assigns all movies as @movies" do
         movie = Movie.create!(title: "valid title", rating: "PG")
@@ -18,6 +19,7 @@ RSpec.describe MoviesController, type: :controller do
                                         :sort => 'release_date'
       end
     end
+    # GET show
     describe "GET show" do
       it "assigns the requested movie as @movie" do
         movie = Movie.create!(title: "valid title")
@@ -25,6 +27,7 @@ RSpec.describe MoviesController, type: :controller do
         expect(assigns(:movie)).to eq movie
       end
     end
+    # GET edit
     describe "GET edit" do
       it "assigns the requested movie as @movie" do
         movie = Movie.create!(title: "valid title")
@@ -32,6 +35,7 @@ RSpec.describe MoviesController, type: :controller do
         expect(assigns(:movie)).to eq movie
       end
     end
+    # Put update
     describe "Put update" do
         it "assigns the requested movie as @movie" do
             movie = Movie.create!(title: 'something')
@@ -41,6 +45,7 @@ RSpec.describe MoviesController, type: :controller do
             expect(response).to redirect_to(movie)
       end
     end
+    # POST create
     describe "POST create" do
       it "creates a new movie" do
         parameters = {movie: {title: 'valid title'}}
@@ -48,6 +53,7 @@ RSpec.describe MoviesController, type: :controller do
         expect(flash[:notice]).to eq "valid title was successfully created."
       end
     end
+    # DELETE destroy
     describe "DELETE destroy" do
       it "destroys the requested movie" do
         movie = Movie.create!(title: 'something')
@@ -58,20 +64,22 @@ RSpec.describe MoviesController, type: :controller do
         expect(response).to redirect_to movies_path
       end
     end
+    # Get search
     describe "Get search" do
         it "searches similar movies" do
-            movie1 = Movie.create!(title: 'something', director: 'yiwei')
-            movie2 = Movie.create!(title: 'something2', director: 'yiwei')
-            get :search_directors, {:id => movie1.to_param}
-            expect(assigns(:movies)).to eq [movie1, movie2]
-            expect(assigns(:movie)).to eq movie1
+            movie_1 = Movie.create!(title: 'something', director: 'yiwei')
+            movie_2 = Movie.create!(title: 'something2', director: 'yiwei')
+            get :search_directors, {:id => movie_1.to_param}
+            expect(assigns(:movies)).to eq [movie_1, movie_2]
+            expect(assigns(:movie)).to eq movie_1
         end
         it "searches movies with no director" do
-            movie1 = Movie.create!(title: 'something', director: '')
-            get :search_directors, {:id => movie1.to_param}
-            expect(assigns(:movie)).to eq movie1
+            movie_1 = Movie.create!(title: 'something', director: '')
+            get :search_directors, {:id => movie_1.to_param}
+            expect(assigns(:movie)).to eq movie_1
             expect(flash[:notice]).to eq "'something' has no director info"
             expect(response).to redirect_to movies_path
         end
     end
+    
 end

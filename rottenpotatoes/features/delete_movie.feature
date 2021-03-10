@@ -18,3 +18,9 @@ Scenario: delete a movie
   When  I press "Delete"
   Then  I should be on the home page
   And   I should see "Movie 'THX-1138' deleted."
+
+Scenario: delete a movie
+  Given I am on the details page for "Alien"
+  When  I press "Delete"
+  Then  I should be on the home page
+  And   I should see "Movie 'Alien' deleted."

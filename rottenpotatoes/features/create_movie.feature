@@ -10,3 +10,10 @@ Scenario: create a new movie
   And   I press "Save Changes"
   Then  I should be on the home page
   And   I should see "Advenger was successfully created"
+
+Scenario: create a new movie
+  When  I am on the new page
+  And   I fill in "Title" with "Iron Man"
+  And   I press "Save Changes"
+  Then  I should be on the home page
+  And   I should see "Iron Man was successfully created"

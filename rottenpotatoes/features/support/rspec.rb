@@ -1,10 +1,10 @@
 require 'rspec/core'
 
-RSpec.configure do |config|
-  config.mock_with :rspec do |c|
-    c.syntax = [:should, :expect]
+RSpec.configure do |configs|
+  configs.mock_with :rspec do |config|
+    config.syntax = [:should, :expect]
   end
-  config.expect_with :rspec do |c|
-    c.syntax = [:should, :expect]
+  configs.expect_with :rspec do |config|
+    config.syntax = [:should, :expect]
   end
 end
