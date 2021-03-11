@@ -45,25 +45,6 @@ RSpec.describe MoviesController, type: :controller do
             expect(response).to redirect_to(movie)
       end
     end
-    # POST create
-    describe "POST create" do
-      it "creates a new movie" do
-        parameters = {movie: {title: 'valid title'}}
-        expect {post :create, parameters}.to change(Movie, :count).by(1)
-        expect(flash[:notice]).to eq "valid title was successfully created."
-      end
-    end
-    # DELETE destroy
-    describe "DELETE destroy" do
-      it "destroys the requested movie" do
-        movie = Movie.create!(title: 'Advenger')
-        expect do
-          delete :destroy, {:id => movie.to_param}
-        end.to change(Movie, :count).by(-1)
-        expect(flash[:notice]).to eq "Movie 'Advenger' deleted."
-        expect(response).to redirect_to movies_path
-      end
-    end
     # Get search
     describe "Get search" do
         it "searches similar movies" do
