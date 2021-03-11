@@ -38,7 +38,7 @@ RSpec.describe MoviesController, type: :controller do
     # Put update
     describe "Put update" do
         it "assigns the requested movie as @movie" do
-            movie = Movie.create!(title: 'something')
+            movie = Movie.create!(title: 'Advenger')
             put :update, {:id => movie.to_param, :movie => {"title" => "new title"}}
             expect(assigns(:movie)).to eq movie
             expect(flash[:notice]).to eq "new title was successfully updated."
@@ -56,28 +56,28 @@ RSpec.describe MoviesController, type: :controller do
     # DELETE destroy
     describe "DELETE destroy" do
       it "destroys the requested movie" do
-        movie = Movie.create!(title: 'something')
+        movie = Movie.create!(title: 'Advenger')
         expect do
           delete :destroy, {:id => movie.to_param}
         end.to change(Movie, :count).by(-1)
-        expect(flash[:notice]).to eq "Movie 'something' deleted."
+        expect(flash[:notice]).to eq "Movie 'Advenger' deleted."
         expect(response).to redirect_to movies_path
       end
     end
     # Get search
     describe "Get search" do
         it "searches similar movies" do
-            movie_1 = Movie.create!(title: 'something', director: 'yiwei')
-            movie_2 = Movie.create!(title: 'something2', director: 'yiwei')
+            movie_1 = Movie.create!(title: 'Advenger', director: 'guanchu')
+            movie_2 = Movie.create!(title: 'X-men', director: 'guanchu')
             get :search_directors, {:id => movie_1.to_param}
             expect(assigns(:movies)).to eq [movie_1, movie_2]
             expect(assigns(:movie)).to eq movie_1
         end
         it "searches movies with no director" do
-            movie_1 = Movie.create!(title: 'something', director: '')
+            movie_1 = Movie.create!(title: 'Advenger', director: '')
             get :search_directors, {:id => movie_1.to_param}
             expect(assigns(:movie)).to eq movie_1
-            expect(flash[:notice]).to eq "'something' has no director info"
+            expect(flash[:notice]).to eq "'Advenger' has no director info"
             expect(response).to redirect_to movies_path
         end
     end
